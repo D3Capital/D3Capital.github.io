@@ -9,7 +9,8 @@ permalink: /research/
 <ul>
   {% for post in items %}
     <li>
-      {{ post.date | date: "%Y-%m-%d" }} · <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      {{ post.date | date: "%Y-%m-%d" }} ·
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
     </li>
   {% endfor %}
 </ul>
