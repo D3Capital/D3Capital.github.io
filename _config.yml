@@ -1,13 +1,14 @@
 title: D3Capital
 description: Systematic Investor · Capital Research · Data-Driven Arbitrage
 theme: minima
-future: true
 timezone: Asia/Shanghai
+future: true
 
 plugins:
   - jekyll-feed
 
 header_pages:
+  - index.md
   - research.md
   - journal.md
   - views.md
