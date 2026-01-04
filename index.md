@@ -1,9 +1,7 @@
 ---
-layout: page
-title: D3Capital
+layout: home
+title: ""
 ---
-
-# D3Capital
 
 ## 研究站说明
 
@@ -11,4 +9,4 @@ title: D3Capital
 - **Journal**：执行与复盘日志（过程证据）
 - **Views**：低频高质量观点（结构判断）
 
-> 本站只研究 **可重复、可规模化、非方向性** 的收益结构。
+> 本站只研究“可重复、可规模化、非方向性”的收益结构。
