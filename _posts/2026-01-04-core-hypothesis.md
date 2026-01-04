@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Research] 核心假设：卖方策略的结构性优势"
+title: "核心假设：卖方策略的结构性优势"
 categories: research
 tags: [options, structure, hypothesis]
 ---
