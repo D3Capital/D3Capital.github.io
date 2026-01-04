@@ -13,3 +13,13 @@ header_pages:
   - research.md
   - journal.md
   - views.md
+collections:
+  research:
+    output: true
+    permalink: /research/:name/
+  journal:
+    output: true
+    permalink: /journal/:name/
+  views:
+    output: true
+    permalink: /views/:name/
