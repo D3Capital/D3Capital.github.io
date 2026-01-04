@@ -1,0 +1,12 @@
+title: D3Capital
+description: Systematic Investor · Capital Research · Data-Driven Arbitrage
+theme: minima
+timezone: Asia/Shanghai
+
+plugins:
+  - jekyll-feed
+
+header_pages:
+  - research.md
+  - journal.md
+  - views.md
