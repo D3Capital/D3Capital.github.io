@@ -1,7 +1,6 @@
 ---
 layout: page
 title: "R-001｜卖方策略的结构性优势"
-collection: research
 rid: R-001
 status: active
 ---
