@@ -1,46 +1,69 @@
 ---
 layout: page
 title: ""
-permalink: /
 ---
 
-## D3Capital · Capital Research
+# D3Capital · Capital Research
 
 **Systematic Investor · Data-Driven Arbitrage**
 
-本站专注于研究**可复用、可验证、可规模化的收益结构**，  
-不做行情预测，不输出情绪判断。
+> 本站聚焦于 **可复用、可验证、可规模化的收益结构研究**。  
+> 不做行情预测，不输出情绪判断，不提供交易建议。
 
 ---
 
-## 研究站规则
+## Research Philosophy
 
-- **Research**：结构性研究与核心假设，强调逻辑自洽与边界条件  
-- **Journal**：执行记录与复盘日志，用于验证研究与修正偏差  
-- **Views**：低频结构判断，明确适用区间与失效条件
+- 研究对象：**结构性收益机制（非方向性）**
+- 研究目标：明确 *适用区间 / 失效条件 / 风险来源*
+- 研究原则：逻辑自洽 > 经验归纳 > 观点表达
 
 ---
 
-## 最新更新
+## Content Structure
 
 ### Research
-{% for post in site.categories.research limit: 5 %}
-- {{ post.date | date: "%Y-%m-%d" }} · [{{ post.title }}]({{ post.url }})
-{% endfor %}
-[查看全部 Research →](/research/)
+**结构性研究与核心假设**
+
+- 明确问题定义
+- 提出可被证伪的假设
+- 给出逻辑边界与失效条件
+
+→ [查看全部 Research →](/research/)
 
 ---
 
 ### Journal
-{% for post in site.categories.journal limit: 5 %}
-- {{ post.date | date: "%Y-%m-%d" }} · [{{ post.title }}]({{ post.url }})
-{% endfor %}
-[查看全部 Journal →](/journal/)
+**执行记录与复盘日志**
+
+- 验证研究假设
+- 记录执行偏差
+- 反向修正研究结论
+
+→ [查看全部 Journal →](/journal/)
 
 ---
 
 ### Views
-{% for post in site.categories.views limit: 5 %}
-- {{ post.date | date: "%Y-%m-%d" }} · [{{ post.title }}]({{ post.url }})
-{% endfor %}
+**低频结构判断档案**
+
+- 非即时观点
+- 只讨论“结构是否成立”
+- 明确时间尺度与不适用区间
+
+→ [查看全部 Views →](/views/)
+
+---
+
+## Latest Research
+
+- **2026-01-05 · R-000**  
+  [Research：研究方法与边界说明](/research/2026-01-05-r-000-methodology.html)
+
+---
+
+## Usage Notice
+
+本站内容为研究与方法论记录，不构成投资建议。  
+所有研究结论均假设读者具备基本金融与风险认知能力。
 [查看全部 Views →](/views/)
