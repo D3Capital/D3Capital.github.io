@@ -4,6 +4,9 @@ title: Research
 permalink: /research/
 ---
 
-{% for post in site.categories.research %}
-- [{{ post.title }}]({{ post.url }})
+{% assign research_posts = site.posts | where_exp: "post", "post.categories contains 'research'" %}
+
+{% for post in research_posts %}
+- **{{ post.date | date: "%Y-%m-%d" }} · {{ post.title }}**  
+  [阅读全文]({{ post.url | relative_url }})
 {% endfor %}
