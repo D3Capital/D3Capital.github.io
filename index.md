@@ -66,6 +66,25 @@ title: ""
 
 ---
 
+## Latest Views
+{% assign views_posts = site.posts | where_exp: "post", "post.categories contains 'views'" %}
+{% for post in views_posts limit:3 %}
+- **{{ post.date | date: "%Y-%m-%d" }} · {{ post.title }}**
+  [阅读全文]({{ post.url | relative_url }})
+{% endfor %}
+
+---
+
+## Latest Journal
+{% assign journal_posts = site.posts | where_exp: "post", "post.categories contains 'journal'" %}
+{% for post in journal_posts limit:3 %}
+- **{{ post.date | date: "%Y-%m-%d" }} · {{ post.title }}**
+  [阅读全文]({{ post.url | relative_url }})
+{% endfor %}
+
+---
+
+
 ## Usage Notice
 
 本站内容为研究与方法论记录，不构成投资建议。  
