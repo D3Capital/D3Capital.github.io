@@ -1,11 +1,9 @@
 ---
 layout: page
-title: "Research"
+title: Research
+permalink: /research/
 ---
 
-{% assign items = site.research %}
-{{ items | size }}
-
-{% for r in site.research %}
-- {{ r.title }} → {{ r.url }}
+{% for post in site.categories.research %}
+- [{{ post.title }}]({{ post.url }})
 {% endfor %}
