@@ -58,7 +58,7 @@ title: ""
 ## Latest Research
 
 - **2026-01-05 · R-000**  
-  [Research：研究方法与边界说明](/research/2026-01-05-r-000-methodology.html)
+  [Research: 研究方法与边界说明](/research/r-000-methodology/)
 
 ---
 
