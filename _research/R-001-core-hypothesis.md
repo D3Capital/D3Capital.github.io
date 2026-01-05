@@ -1,8 +1,10 @@
 ---
 layout: page
 title: "R-001｜卖方策略的结构性优势"
+collection: research
 rid: R-001
 status: active
+permalink: /research/r-001-core-hypothesis/
 ---
 
 ## 一句话结论
