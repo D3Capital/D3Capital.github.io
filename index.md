@@ -57,8 +57,12 @@ title: ""
 
 ## Latest Research
 
-- **2026-01-05 · R-000**  
-  [Research: 研究方法与边界说明](/research/r-000-methodology/)
+{% assign research_posts = site.posts | where_exp: "post", "post.categories contains 'research'" %}
+
+{% for post in research_posts limit:3 %}
+- **{{ post.date | date: "%Y-%m-%d" }} · {{ post.title }}**
+  [阅读全文]({{ post.url | relative_url }})
+{% endfor %}
 
 ---
 
