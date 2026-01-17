@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% if page.title and page.title != "" %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+    {% seo %}
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <a href="/">{{ site.title }}</a>
+      </div>
+      <nav class="nav">
+        <a href="/research/">Research</a>
+        <a href="/about/">About</a>
+      </nav>
+    </header>
+
+    <main class="content">
+      {{ content }}
+    </main>
+
+    <style>
+      /* minimal, institutional */
+      body { margin: 0; }
+      .topbar{
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 28px;
+        background: #0b0b0b;
+      }
+      .brand a{
+        color: rgba(255,255,255,.92);
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+      }
+      .nav a{
+        color: rgba(255,255,255,.82);
+        text-decoration: none;
+        margin-left: 18px;
+        font-size: 13px;
+        letter-spacing: .06em;
+      }
+      .nav a:hover{ color:#fff; }
+      .content{ max-width: 1100px; margin: 0 auto; padding: 28px; }
+    </style>
+  </body>
+</html>
