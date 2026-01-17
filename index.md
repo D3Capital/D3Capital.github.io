@@ -4,7 +4,34 @@ title: ""
 ---
 
 <style>
-/* ===== HERO LAYOUT ===== */
+/* ===== Homepage hard reset (remove top white gap) ===== */
+html, body { margin: 0 !important; padding: 0 !important; }
+body { padding-top: 0 !important; }
+
+/* Hide theme header on homepage (common selectors) */
+header,
+.site-header,
+.page-header,
+.masthead,
+.navbar {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Remove top spacing from common wrappers/containers */
+main,
+.page-content,
+.container,
+.wrapper,
+.content,
+#content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* ===== HERO (full-bleed) ===== */
 .hero {
   position: relative;
   width: 100vw;
@@ -15,89 +42,99 @@ title: ""
   overflow: hidden;
 }
 
-/* Background image */
 .hero-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  transform: scale(1.01);
 }
 
-/* Dark overlay for text contrast */
+/* Strong overlay to guarantee readability */
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(0,0,0,0.55) 0%,
-    rgba(0,0,0,0.35) 40%,
-    rgba(0,0,0,0.65) 100%
+    rgba(0,0,0,0.60) 0%,
+    rgba(0,0,0,0.35) 45%,
+    rgba(0,0,0,0.68) 100%
   );
 }
 
-/* Top navigation inside hero */
-.hero-nav {
+/* Top nav inside hero */
+.hero-topbar {
   position: absolute;
-  top: 28px;
-  left: 48px;
-  right: 48px;
+  top: 22px;
+  left: 42px;
+  right: 42px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  z-index: 3;
+  justify-content: space-between;
+  z-index: 5;
   font-size: 14px;
   letter-spacing: 0.06em;
 }
 
-.hero-nav a {
-  color: rgba(255,255,255,0.85);
-  text-decoration: none;
-  margin-left: 28px;
+.hero-brand a {
+  color: rgba(255,255,255,0.92) !important;
+  text-decoration: none !important;
+  font-weight: 600;
+  text-shadow: 0 10px 22px rgba(0,0,0,0.45);
 }
 
-.hero-nav a:hover {
-  color: #ffffff;
+.hero-links {
+  display: flex;
+  gap: 22px;
 }
 
-/* Hero text */
+.hero-links a {
+  color: rgba(255,255,255,0.86) !important;
+  text-decoration: none !important;
+  font-weight: 500;
+  padding: 8px 10px;
+  border-radius: 10px;
+  text-shadow: 0 10px 22px rgba(0,0,0,0.45);
+}
+
+.hero-links a:hover {
+  background: rgba(255,255,255,0.10);
+  color: #fff !important;
+}
+
+/* Hero title block */
 .hero-text {
   position: absolute;
-  left: 48px;
-  bottom: 96px;
-  max-width: 820px;
-  color: #ffffff;
-  z-index: 2;
+  left: 42px;
+  right: 42px;
+  bottom: 88px;
+  max-width: 980px;
+  z-index: 4;
 }
 
 .hero-text h1 {
-  margin: 0 0 14px;
-  font-size: 46px;
+  color: #fff !important;
+  margin: 0 0 12px;
+  font-size: clamp(30px, 3.6vw, 48px);
   font-weight: 500;
   letter-spacing: 0.02em;
-  line-height: 1.15;
+  line-height: 1.12;
+  text-shadow: 0 10px 24px rgba(0,0,0,0.55);
 }
 
 .hero-text p {
+  color: rgba(255,255,255,0.90) !important;
   margin: 0;
-  font-size: 18px;
-  line-height: 1.6;
-  opacity: 0.9;
+  font-size: clamp(14px, 1.35vw, 18px);
+  line-height: 1.55;
+  text-shadow: 0 10px 22px rgba(0,0,0,0.45);
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-  .hero {
-    height: 60vh;
-    min-height: 420px;
-  }
-  .hero-text {
-    left: 22px;
-    right: 22px;
-    bottom: 48px;
-  }
-  .hero-text h1 {
-    font-size: 32px;
-  }
+  .hero { height: 60vh; min-height: 420px; }
+  .hero-topbar { left: 18px; right: 18px; top: 16px; }
+  .hero-text { left: 18px; right: 18px; bottom: 44px; }
 }
 </style>
 
@@ -106,15 +143,14 @@ title: ""
   <img class="hero-img" src="/assets/img/hero.jpg" alt="D3Capital Research">
   <div class="hero-overlay"></div>
 
-  <div class="hero-nav">
+  <div class="hero-topbar">
     <div class="hero-brand">
-      <a href="/">D3Capital</a>
+      <a href="/" aria-label="D3Capital Home">D3Capital</a>
     </div>
-    <div class="hero-links">
+    <nav class="hero-links" aria-label="Primary">
       <a href="/research/">Research</a>
-      <a href="/journal/">Journal</a>
-      <a href="/views/">Views</a>
-    </div>
+      <a href="/about/">About</a>
+    </nav>
   </div>
 
   <div class="hero-text">
@@ -123,15 +159,3 @@ title: ""
   </div>
 </div>
 <!-- /HERO -->
-
-<br>
-
-D3Capital documents research on structural, non-directional return mechanisms.
-
-We focus on repeatable, falsifiable strategies across markets and capital structures.  
-No market forecasts. No investment advice.
-
-<br>
-
-For professional or research-related correspondence:  
-data3capital@outlook.com
