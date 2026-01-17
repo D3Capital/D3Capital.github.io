@@ -8,7 +8,7 @@ title: ""
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: clamp(640px, 92vh, 860px);
   overflow: hidden;
 }
 
@@ -52,15 +52,17 @@ title: ""
   text-transform: uppercase;
   color: rgba(255,255,255,0.95);
   text-decoration: none;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.35);
 }
 
 .hero-links a {
   margin-left: 32px;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 500;
   letter-spacing: 0.05em;
   color: rgba(255,255,255,0.9);
   text-decoration: none;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.35);
 }
 
 .hero-links a:hover {
@@ -85,6 +87,7 @@ title: ""
   line-height: 1.15;
   font-weight: 600;
   color: #fff;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.35);
 }
 
 .hero-text p {
