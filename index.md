@@ -1,9 +1,30 @@
 ---
 layout: page
-title: ""
+title: " "
 ---
+<style>
+/* Hero banner */
+.hero { position: relative; border-radius: 14px; overflow: hidden; margin: 18px 0 28px; }
+.hero-img { width: 100%; height: 380px; object-fit: cover; display: block; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,.15), rgba(0,0,0,.45)); }
+.hero-text { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: 42px; max-width: 980px; }
+.hero-text h1 { margin: 0 0 10px; font-size: 42px; line-height: 1.1; letter-spacing: .02em; }
+.hero-text p { margin: 0; font-size: 18px; line-height: 1.5; opacity: .9; }
+@media (max-width: 720px) { .hero-img { height: 300px; } .hero-text { padding: 22px; } .hero-text h1 { font-size: 30px; } }
+</style>
 
-# D3Capital · Capital Research
+<!-- HERO -->
+<div class="hero">
+  <img class="hero-img" src="/assets/img/hero.jpg" alt="D3 Capital Research Notes">
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <h1>D3 Capital Research Notes</h1>
+    <p>Systematic thinking on markets, capital, and decisions.</p>
+  </div>
+</div>
+<!-- /HERO -->
+
+## D3Capital · Capital Research
 
 **Systematic Investor · Data-Driven Arbitrage**
 
@@ -89,4 +110,4 @@ title: ""
 
 本站内容为研究与方法论记录，不构成投资建议。  
 所有研究结论均假设读者具备基本金融与风险认知能力。
-[查看全部 Views →](/views/)
+[查看全部 Views →]
