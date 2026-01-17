@@ -2,92 +2,108 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{% if page.title and page.title != "" %}{{ page.title }} · {% endif %}{{ site.title }}</title>
-    {% seo %}
-    <style>
-  .site-header{
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 32px;
-    background: #fff;
-    border-bottom: 1px solid rgba(0,0,0,.08);
-  }
-  .site-brand{
-    text-decoration: none;
-    color: #111;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: .10em;
-    text-transform: uppercase;
-  }
-  .site-nav a{
-    text-decoration: none;
-    color: #111;
-    margin-left: 22px;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: .04em;
-    opacity: .85;
-  }
-  .site-nav a:hover{ opacity: 1; }
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>
+      {% if page.title and page.title != "" %}
+        {{ page.title }} · {{ site.title }}
+      {% else %}
+        {{ site.title }}
+      {% endif %}
+    </title>
 
-  @media (max-width: 720px){
-    .site-header{ padding: 14px 18px; }
-    .site-nav a{ margin-left: 14px; }
-  }
-</style>
-  </head>
-  <body>
-
-    <main class="content">
-      <header class="site-header">
-  <a class="site-brand" href="/">D3Capital</a>
-
-  <nav class="site-nav" aria-label="Primary">
-    {% for item in site.navigation %}
-      <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
-    {% endfor %}
-  </nav>
-</header>
-      <main class="page-content">
-        {{ content }}
-      </main>
-    </main>
+    {% if site.description %}
+      <meta name="description" content="{{ site.description | strip_html | strip_newlines | escape }}" />
+    {% endif %}
 
     <style>
-      /* minimal, institutional */
-      body { margin: 0; }
-      .topbar{
+      /* ---------- Base ---------- */
+      :root{
+        --bg:#ffffff;
+        --fg:#111111;
+        --muted: rgba(0,0,0,.68);
+        --line: rgba(0,0,0,.10);
+      }
+      html,body{ margin:0; padding:0; background:var(--bg); color:var(--fg); }
+      body{
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+        line-height: 1.6;
+      }
+      a{ color: inherit; }
+      a:hover{ opacity:.9; }
+
+      /* ---------- Global Header (inner pages) ---------- */
+      .site-header{
         position: sticky;
         top: 0;
         z-index: 50;
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        padding: 16px 28px;
-        background: #0b0b0b;
+        justify-content: space-between;
+        padding: 18px 32px;
+        background: rgba(255,255,255,.92);
+        backdrop-filter: saturate(180%) blur(10px);
+        border-bottom: 1px solid var(--line);
       }
-      .brand a{
-        color: rgba(255,255,255,.92);
+      .site-brand{
         text-decoration: none;
+        color: var(--fg);
+        font-size: 16px;
         font-weight: 700;
-        letter-spacing: .04em;
+        letter-spacing: .10em;
         text-transform: uppercase;
       }
-      .page-content {
+      .site-nav a{
+        text-decoration: none;
+        color: var(--fg);
+        margin-left: 22px;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: .04em;
+        opacity: .85;
+      }
+      .site-nav a:hover{ opacity: 1; }
+
+      /* ---------- Content Container (inner pages) ---------- */
+      .page-content{
         max-width: 760px;
         margin: 0 auto;
         padding: 72px 24px 96px;
       }
+      .page-content h1{ margin: 0 0 18px; font-size: 44px; line-height: 1.15; }
+      .page-content h2{ margin: 36px 0 12px; font-size: 22px; }
+      .page-content p{ margin: 0 0 14px; color: var(--fg); }
+      .page-content hr{ border:0; border-top:1px solid var(--line); margin: 28px 0; }
 
-    .page-content h1 {
-    margin-top: 0;
-    }
+      /* ---------- Mobile ---------- */
+      @media (max-width: 720px){
+        .site-header{ padding: 14px 18px; }
+        .site-nav a{ margin-left: 14px; font-size: 14px; }
+        .page-content{ padding: 56px 18px 72px; }
+        .page-content h1{ font-size: 34px; }
+      }
     </style>
+  </head>
+
+  <body>
+    <!-- Header for inner pages (Home uses its own hero nav, so we hide this header on home) -->
+    {% if page.url != "/" %}
+      <header class="site-header">
+        <a class="site-brand" href="{{ '/' | relative_url }}">D3Capital</a>
+        <nav class="site-nav" aria-label="Primary">
+          {% if site.navigation %}
+            {% for item in site.navigation %}
+              <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+            {% endfor %}
+          {% else %}
+            <a href="{{ '/research' | relative_url }}">Research</a>
+            <a href="{{ '/about' | relative_url }}">About</a>
+          {% endif %}
+        </nav>
+      </header>
+    {% endif %}
+
+    <main class="page-content">
+      {{ content }}
+    </main>
   </body>
 </html>
