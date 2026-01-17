@@ -1,149 +1,141 @@
 ---
 layout: home
-title: ""
+title: " "
+permalink: /
 ---
 
 <style>
-/* ========== HERO BASE ========== */
+/* --- Home: full-bleed hero + minimal manifesto --- */
+
+/* Remove any layout padding on the home page (theme-dependent) */
+.page-content, .wrapper, .container {
+  max-width: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* HERO */
 .hero {
   position: relative;
   width: 100%;
-  height: clamp(640px, 92vh, 860px);
+  height: 86vh;
+  min-height: 620px;
   overflow: hidden;
+  margin: 0;
 }
 
-/* Background image */
 .hero-img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-/* Dark overlay */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(0,0,0,0.55) 0%,
-    rgba(0,0,0,0.35) 40%,
-    rgba(0,0,0,0.55) 100%
-  );
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,.20), rgba(0,0,0,.45));
 }
 
-/* Top navigation inside hero */
+/* Top nav inside hero */
 .hero-top {
   position: absolute;
-  top: 28px;
-  left: 40px;
-  right: 40px;
+  top: 22px;
+  left: 28px;
+  right: 28px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  z-index: 5;
+  justify-content: space-between;
+  z-index: 3;
 }
 
-.hero-brand {
-  font-size: 22px;
-  font-weight: 600;
+.hero-brand a{
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.95);
+  color: rgba(255,255,255,0.96);
+}
+
+.hero-links a{
   text-decoration: none;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+  margin-left: 22px;
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.92);
+  opacity: 0.9;
 }
+.hero-links a:hover { opacity: 1; }
 
-.hero-links a {
-  margin-left: 32px;
-  font-size: 17px;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  color: rgba(255,255,255,0.9);
-  text-decoration: none;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.35);
-}
-
-.hero-links a:hover {
-  opacity: 1;
-}
-
-/* Center text */
+/* Hero title block */
 .hero-text {
-  position: relative;
-  z-index: 4;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 64px;
-  max-width: 900px;
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  bottom: 64px;
+  z-index: 3;
+  max-width: 980px;
 }
 
 .hero-text h1 {
-  margin: 0 0 14px;
-  font-size: 48px;
-  line-height: 1.15;
-  font-weight: 600;
-  color: #fff;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+  margin: 0 0 10px;
+  font-size: 56px;
+  line-height: 1.06;
+  letter-spacing: 0.01em;
+  color: rgba(255,255,255,0.98);
 }
 
 .hero-text p {
   margin: 0;
   font-size: 18px;
   line-height: 1.6;
-  color: rgba(255,255,255,0.9);
+  color: rgba(255,255,255,0.86);
+}
+
+/* Manifesto block (fix "half-finished" feeling) */
+.manifesto {
+  max-width: 860px;
+  margin: 84px auto 120px;
+  padding: 0 24px;
+  text-align: center;
+}
+.manifesto p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.95;
+  color: rgba(0,0,0,0.62);
 }
 
 /* Mobile */
-@media (max-width: 768px) {
-  .hero-text {
-    padding-left: 28px;
-    padding-right: 28px;
-  }
-  .hero-text h1 {
-    font-size: 34px;
-  }
-  .hero-top {
-    left: 20px;
-    right: 20px;
-  }
-}
-@media (max-width: 520px) {
-  .hero-top{
-    top: 18px;
-    left: 16px;
-    right: 16px;
-  }
-  .hero-brand{
-    font-size: 18px;
-    letter-spacing: 0.10em;
-  }
-  .hero-links a{
-    margin-left: 14px;
-    font-size: 14px;
-    letter-spacing: 0.04em;
-  }
-  .hero-text h1{
-    font-size: 30px;
-  }
-  .hero-text p{
-    font-size: 16px;
-  }
+@media (max-width: 720px) {
+  .hero { height: 78vh; min-height: 520px; }
+  .hero-top { top: 16px; left: 18px; right: 18px; }
+  .hero-brand a{ font-size: 18px; }
+  .hero-links a{ margin-left: 14px; font-size: 14px; }
+  .hero-text { left: 18px; right: 18px; bottom: 44px; }
+  .hero-text h1 { font-size: 40px; }
+  .hero-text p { font-size: 16px; }
+  .manifesto { margin: 64px auto 96px; }
 }
 </style>
 
-<div class="hero">
-  <img class="hero-img" src="/assets/img/hero.jpg" alt="D3 Capital Research">
+<!-- HERO -->
+<section class="hero" aria-label="D3Capital Hero">
+  <img class="hero-img" src="/assets/img/hero.jpg" alt="D3Capital Research">
   <div class="hero-overlay"></div>
 
   <div class="hero-top">
-    <a class="hero-brand" href="/">D3Capital</a>
-    <nav class="hero-links">
-      <a href="/research">Research</a>
-      <a href="/about">About</a>
+    <div class="hero-brand">
+      <a href="/" aria-label="Home">D3CAPITAL</a>
+    </div>
+    <nav class="hero-links" aria-label="Primary">
+      <a href="/research/">Research</a>
+      <a href="/about/">About</a>
     </nav>
   </div>
 
@@ -151,4 +143,15 @@ title: ""
     <h1>D3 Capital Research Notes</h1>
     <p>Systematic thinking on markets, capital, and decisions.</p>
   </div>
-</div>
+</section>
+<!-- /HERO -->
+
+<!-- MANIFESTO -->
+<section class="manifesto" aria-label="Manifesto">
+  <p>
+    D3Capital is an independent research notebook focused on structural, non-directional return mechanisms.<br>
+    We document reusable research logic, validity ranges, and failure conditions.<br>
+    No forecasts. No recommendations.
+  </p>
+</section>
+<!-- /MANIFESTO -->
