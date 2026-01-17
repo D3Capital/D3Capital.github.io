@@ -81,31 +81,13 @@
         .page-content{ padding: 56px 18px 72px; }
         .page-content h1{ font-size: 34px; }
       }
-      /* === Remove top whitespace above hero (global) === */
-html, body { margin: 0; padding: 0; }
+      /* Minimal fix: remove default browser margin (top white strip) */
+      html, body { margin: 0; padding: 0; }
 
-body { background: #000; } /* 避免露白 */
+      /* Keep layout intact: do NOT reset main/page-content/container */
 
-.site-header,
-.topbar {
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-}
-
-/* 如果主题用的是 page-content / main 包裹内容，这里也清掉 */
-.page-content,
-main,
-.content,
-.container {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
-/* 确保 hero 自身不再额外往下推 */
-.hero {
-  margin-top: 0 !important;
-}
+      /* Ensure hero touches top */
+.hero { margin-top: 0 !important; }
     </style>
   </head>
 
