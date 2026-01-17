@@ -54,7 +54,9 @@
     {% endfor %}
   </nav>
 </header>
-      {{ content }}
+      <main class="page-content">
+        {{ content }}
+      </main>
     </main>
 
     <style>
@@ -77,6 +79,15 @@
         letter-spacing: .04em;
         text-transform: uppercase;
       }
+      .page-content {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 72px 24px 96px;
+      }
+
+    .page-content h1 {
+    margin-top: 0;
+    }
     </style>
   </body>
 </html>
