@@ -77,10 +77,13 @@ main,
 }
 
 .hero-brand a {
-  color: rgba(255,255,255,0.92) !important;
+  color: rgba(255,255,255,0.96) !important;
   text-decoration: none !important;
-  font-weight: 600;
-  text-shadow: 0 10px 22px rgba(0,0,0,0.45);
+  font-weight: 700;
+  font-size: 18px;          /* 核心调整点 */
+  letter-spacing: 0.04em;   /* 机构感 */
+  text-transform: uppercase; /* 可选，偏机构 */
+  text-shadow: 0 12px 26px rgba(0,0,0,0.55);
 }
 
 .hero-links {
@@ -91,6 +94,7 @@ main,
 .hero-links a {
   color: rgba(255,255,255,0.86) !important;
   text-decoration: none !important;
+  font-size: 13px;
   font-weight: 500;
   padding: 8px 10px;
   border-radius: 10px;
