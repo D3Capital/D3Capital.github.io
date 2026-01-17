@@ -73,6 +73,55 @@ title: " "
 @media (min-width: 1400px){
   .hero-text{ padding-left: calc((100vw - 1200px)/2); }
 }
+/* Hero topbar overlay */
+.hero-topbar{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 28px;
+  padding: 18px clamp(18px, 4vw, 56px);
+}
+
+.hero-brand a{
+  color: rgba(255,255,255,.92) !important;
+  text-decoration: none !important;
+  font-weight: 600;
+  letter-spacing: .02em;
+  text-shadow: 0 10px 22px rgba(0,0,0,.45);
+}
+
+.hero-nav{
+  display: flex;
+  gap: 22px;
+}
+
+.hero-nav a{
+  color: rgba(255,255,255,.88) !important;
+  text-decoration: none !important;
+  font-weight: 500;
+  letter-spacing: .02em;
+  padding: 8px 10px;
+  border-radius: 10px;
+  text-shadow: 0 10px 22px rgba(0,0,0,.45);
+}
+
+.hero-nav a:hover{
+  background: rgba(255,255,255,.10);
+}
+
+/* Move hero text down a bit so it doesn't collide with topbar */
+.hero-text{
+  padding-top: clamp(64px, 7vw, 96px) !important;
+}
+/* Hide theme header on homepage only (layout: page) */
+header, .site-header, .page-header{
+  display: none !important;
+}
 </style>
 
 <!-- HERO -->
@@ -80,6 +129,20 @@ title: " "
   <div class="hero">
     <img class="hero-img" src="/assets/img/hero.jpg" alt="D3 Capital Research Notes">
     <div class="hero-overlay"></div>
+
+    <!-- hero top bar -->
+    <div class="hero-topbar">
+      <div class="hero-brand">
+        <a href="/" aria-label="D3Capital Home">D3Capital</a>
+      </div>
+
+      <nav class="hero-nav" aria-label="Primary">
+        <a href="/research/">Research</a>
+        <a href="/journal/">Journal</a>
+        <a href="/views/">Views</a>
+      </nav>
+    </div>
+
     <div class="hero-text">
       <h1>D3 Capital Research Notes</h1>
       <p>Systematic thinking on markets, capital, and decisions.</p>
