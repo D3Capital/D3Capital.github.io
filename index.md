@@ -1,13 +1,13 @@
 ---
-layout: home
-title: " "
+layout: page
+title: ""
 permalink: /
 ---
 
 <style>
-/* --- Home: full-bleed hero + minimal manifesto --- */
+/* --- Home: full-bleed hero + tight manifesto --- */
 
-/* Remove any layout padding on the home page (theme-dependent) */
+/* Nuke theme wrappers on home */
 .page-content, .wrapper, .container {
   max-width: none !important;
   padding: 0 !important;
@@ -18,8 +18,8 @@ permalink: /
 .hero {
   position: relative;
   width: 100%;
-  height: 86vh;
-  min-height: 620px;
+  height: 72vh;          /* was 86vh */
+  min-height: 520px;    /* was 620px */
   overflow: hidden;
   margin: 0;
 }
@@ -36,16 +36,15 @@ permalink: /
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,.20), rgba(0,0,0,.45));
+  background: linear-gradient(90deg, rgba(0,0,0,.58), rgba(0,0,0,.20), rgba(0,0,0,.50));
 }
 
 /* Top nav inside hero */
 .hero-top {
   position: absolute;
-  top: 22px;
-  left: 28px;
-  right: 28px;
+  top: 18px;
+  left: 24px;
+  right: 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -68,16 +67,17 @@ permalink: /
   font-weight: 650;
   letter-spacing: 0.04em;
   color: rgba(255,255,255,0.92);
-  opacity: 0.9;
+  opacity: 0.92;
 }
 .hero-links a:hover { opacity: 1; }
 
-/* Hero title block */
+/* Title block: center-biased instead of bottom-biased */
 .hero-text {
   position: absolute;
-  left: 28px;
-  right: 28px;
-  bottom: 64px;
+  left: 24px;
+  right: 24px;
+  top: 62%;                 /* key change */
+  transform: translateY(-50%);
   z-index: 3;
   max-width: 980px;
 }
@@ -97,30 +97,30 @@ permalink: /
   color: rgba(255,255,255,0.86);
 }
 
-/* Manifesto block (fix "half-finished" feeling) */
+/* Manifesto block: much tighter */
 .manifesto {
   max-width: 860px;
-  margin: 84px auto 120px;
+  margin: 30px auto 72px;   /* was 84px auto 120px */
   padding: 0 24px;
   text-align: center;
 }
 .manifesto p {
   margin: 0;
   font-size: 16px;
-  line-height: 1.95;
+  line-height: 1.85;
   color: rgba(0,0,0,0.62);
 }
 
 /* Mobile */
 @media (max-width: 720px) {
-  .hero { height: 78vh; min-height: 520px; }
-  .hero-top { top: 16px; left: 18px; right: 18px; }
+  .hero { height: 68vh; min-height: 480px; }
+  .hero-top { top: 14px; left: 16px; right: 16px; }
   .hero-brand a{ font-size: 18px; }
   .hero-links a{ margin-left: 14px; font-size: 14px; }
-  .hero-text { left: 18px; right: 18px; bottom: 44px; }
+  .hero-text { left: 16px; right: 16px; top: 64%; }
   .hero-text h1 { font-size: 40px; }
   .hero-text p { font-size: 16px; }
-  .manifesto { margin: 64px auto 96px; }
+  .manifesto { margin: 22px auto 56px; }
 }
 </style>
 
