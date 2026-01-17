@@ -111,6 +111,28 @@ title: ""
     right: 20px;
   }
 }
+@media (max-width: 520px) {
+  .hero-top{
+    top: 18px;
+    left: 16px;
+    right: 16px;
+  }
+  .hero-brand{
+    font-size: 18px;
+    letter-spacing: 0.10em;
+  }
+  .hero-links a{
+    margin-left: 14px;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+  }
+  .hero-text h1{
+    font-size: 30px;
+  }
+  .hero-text p{
+    font-size: 16px;
+  }
+}
 </style>
 
 <div class="hero">

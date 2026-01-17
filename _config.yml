@@ -13,3 +13,8 @@ header_pages:
   - research.md
   - journal.md
   - views.md
+navigation:
+  - title: Research
+    url: /research
+  - title: About
+    url: /about

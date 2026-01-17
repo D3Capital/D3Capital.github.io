@@ -5,6 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{% if page.title and page.title != "" %}{{ page.title }} · {% endif %}{{ site.title }}</title>
     {% seo %}
+    <style>
+  .site-header{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 32px;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.08);
+  }
+  .site-brand{
+    text-decoration: none;
+    color: #111;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+  }
+  .site-nav a{
+    text-decoration: none;
+    color: #111;
+    margin-left: 22px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    opacity: .85;
+  }
+  .site-nav a:hover{ opacity: 1; }
+
+  @media (max-width: 720px){
+    .site-header{ padding: 14px 18px; }
+    .site-nav a{ margin-left: 14px; }
+  }
+</style>
   </head>
   <body>
     <header class="topbar">
@@ -18,6 +54,15 @@
     </header>
 
     <main class="content">
+      <header class="site-header">
+  <a class="site-brand" href="/">D3Capital</a>
+
+  <nav class="site-nav" aria-label="Primary">
+    {% for item in site.navigation %}
+      <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+    {% endfor %}
+  </nav>
+</header>
       {{ content }}
     </main>
 
