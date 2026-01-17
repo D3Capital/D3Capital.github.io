@@ -76,7 +76,7 @@ permalink: /
   position: absolute;
   left: 24px;
   right: 24px;
-  top: 62%;                 /* key change */
+  top: 58%;                 /* key change */
   transform: translateY(-50%);
   z-index: 3;
   max-width: 980px;
@@ -152,6 +152,9 @@ permalink: /
     D3Capital is an independent research notebook focused on structural, non-directional return mechanisms.<br>
     We document reusable research logic, validity ranges, and failure conditions.<br>
     No forecasts. No recommendations.
+  </p>
+  <p style="margin-top:18px; font-size:14px; opacity:.45;">
+    Selected research is available under <a href="/research/">Research</a>.
   </p>
 </section>
 <!-- /MANIFESTO -->
