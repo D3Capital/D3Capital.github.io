@@ -92,10 +92,11 @@ main,
 }
 
 .hero-links a {
-  color: rgba(255,255,255,0.86) !important;
+  color: rgba(255,255,255,0.85) !important;
   text-decoration: none !important;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
   padding: 8px 10px;
   border-radius: 10px;
   text-shadow: 0 10px 22px rgba(0,0,0,0.45);
@@ -140,10 +141,67 @@ main,
   .hero-topbar { left: 18px; right: 18px; top: 16px; }
   .hero-text { left: 18px; right: 18px; bottom: 44px; }
 }
+.hero-top {
+  position: absolute;
+  top: 28px;
+  left: 32px;
+  right: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
+}
+
+.hero-brand {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.95);
+  text-decoration: none;
+}
+
+.hero-links a {
+  margin-left: 28px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+}
+
+.hero-links a:hover {
+  opacity: 1;
+}
 </style>
 
 <!-- HERO -->
+<section class="home-statement">
+  <p>
+    D3Capital is an independent research notebook.<br>
+    We focus on structural, non-directional return mechanisms.<br>
+    No forecasts. No recommendations.
+  </p>
+</section>
+
+<style>
+.home-statement{
+  padding: 72px 24px 120px;
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.9;
+}
+</style>
 <div class="hero">
+  <div class="hero-top">
+  <a class="hero-brand" href="/">D3Capital</a>
+
+  <nav class="hero-links">
+    <a href="/research/">Research</a>
+    <a href="/about/">About</a>
+  </nav>
+</div>
   <img class="hero-img" src="/assets/img/hero.jpg" alt="D3Capital Research">
   <div class="hero-overlay"></div>
 
