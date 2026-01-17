@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
     <title>
       {% if page.title and page.title != "" %}
         {{ page.title }} · {{ site.title }}
@@ -16,148 +17,121 @@
     {% endif %}
 
     <style>
-      /* ---------- Base ---------- */
-      :root{
-        --bg:#ffffff;
-        --fg:#111111;
-        --muted: rgba(0,0,0,.68);
-        --line: rgba(0,0,0,.10);
-      }
-      html,body{ margin:0; padding:0; background:var(--bg); color:var(--fg); }
-      body{
+      /* =========================
+         Global Reset (safe)
+      ========================== */
+      html, body { margin: 0; padding: 0; }
+      body {
         font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-        line-height: 1.6;
+        color: #111;
+        background: #fff;
+        line-height: 1.65;
       }
-      a{ color: inherit; }
-      a:hover{ opacity:.9; }
+      a { color: inherit; text-decoration: none; }
+      a:hover { opacity: .92; }
+      img { max-width: 100%; height: auto; display: block; }
 
-      /* ---------- Global Header (inner pages) ---------- */
-      .site-header{
-        position: sticky;
-        top: 0;
-        z-index: 50;
+      /* =========================
+         Page Mode Switch
+         - home: no header, no top padding
+         - inner: fixed header + content padding
+      ========================== */
+      body.home { background: #000; } /* 避免首页顶部露白，即使有 1px 缝也不会白 */
+      body.inner { background: #fff; }
+
+      /* =========================
+         Fixed Header (inner pages)
+      ========================== */
+      .site-header {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 9999;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 18px 32px;
-        background: rgba(255,255,255,.92);
-        backdrop-filter: saturate(180%) blur(10px);
-        border-bottom: 1px solid var(--line);
+        padding: 16px 28px;
+        background: rgba(0,0,0,.38);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255,255,255,.10);
       }
-      .site-brand{
-        text-decoration: none;
-        color: var(--fg);
-        font-size: 16px;
-        font-weight: 700;
-        letter-spacing: .10em;
-        text-transform: uppercase;
-      }
-      .site-nav a{
-        text-decoration: none;
-        color: var(--fg);
-        margin-left: 22px;
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: .04em;
-        opacity: .85;
-      }
-      .site-nav a:hover{ opacity: 1; }
 
-      /* ---------- Content Container (inner pages) ---------- */
-      .page-content{
+      .site-brand {
+        font-size: 16px;
+        font-weight: 800;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.95);
+      }
+
+      .site-nav a {
+        margin-left: 20px;
+        font-size: 14px;
+        font-weight: 650;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.90);
+        opacity: .92;
+      }
+      .site-nav a:hover { opacity: 1; }
+
+      /* =========================
+         Inner Page Content Layout
+      ========================== */
+      .page-content {
         max-width: 760px;
         margin: 0 auto;
-        padding: 72px 24px 96px;
+        padding: 88px 24px 96px; /* 顶部留给 fixed header */
       }
-      .page-content h1{ margin: 0 0 18px; font-size: 44px; line-height: 1.15; }
-      .page-content h2{ margin: 36px 0 12px; font-size: 22px; }
-      .page-content p{ margin: 0 0 14px; color: var(--fg); }
-      .page-content hr{ border:0; border-top:1px solid var(--line); margin: 28px 0; }
 
-      /* ---------- Mobile ---------- */
-      @media (max-width: 720px){
-        .site-header{ padding: 14px 18px; }
-        .site-nav a{ margin-left: 14px; font-size: 14px; }
-        .page-content{ padding: 56px 18px 72px; }
-        .page-content h1{ font-size: 34px; }
+      .page-content h1 {
+        margin: 0 0 18px;
+        font-size: 42px;
+        line-height: 1.15;
       }
-      /* Minimal fix: remove default browser margin (top white strip) */
-      html, body { margin: 0; padding: 0; }
+      .page-content h2 {
+        margin: 34px 0 12px;
+        font-size: 22px;
+        line-height: 1.25;
+      }
+      .page-content p { margin: 0 0 14px; color: rgba(0,0,0,.78); }
+      .page-content hr { border: 0; border-top: 1px solid rgba(0,0,0,.10); margin: 26px 0; }
 
-      /* Keep layout intact: do NOT reset main/page-content/container */
+      /* =========================
+         Home Page Layout
+         - No header, no padding
+      ========================== */
+      body.home .page-content {
+        max-width: none;
+        margin: 0;
+        padding: 0; /* 关键：不允许把首页 hero 顶下去 */
+      }
 
-      /* Ensure hero touches top */
-.hero { margin-top: 0 !important; }
-.site-header, .topbar { margin: 0 !important; }
-html, body { margin: 0 !important; padding: 0 !important; }
-body { overflow-x: hidden; }
-
-.site-header, .topbar { margin: 0 !important; padding: 0 !important; border: 0 !important; }
-main, .page-content, .wrapper, .container, .content, .site-content { margin-top: 0 !important; padding-top: 0 !important; }
-
-/* 让 hero 顶到最上面，且消除图片基线缝 */
-/* === FORCE HERO STRAIGHT EDGES === */
-.hero {
-  border-radius: 0 !important;
-  margin: 0 !important;
-  overflow: hidden;
-}
-
-.hero-img {
-  border-radius: 0 !important;
-  display: block;
-}
-/* ===== Global reset: kill white edge ===== */
-html, body { margin: 0; padding: 0; }
-body { background: #000; } /* 避免顶部露出白底 */
-
-/* ===== Top nav: translucent + blur (institutional) ===== */
-.site-header, .topbar {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 9999;
-  margin: 0 !important;
-  background: rgba(0,0,0,0.35);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  border: 0;
-}
-
-/* 导航文字更清晰、更协调 */
-.site-nav a, .nav a {
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: rgba(255,255,255,0.92);
-  text-transform: uppercase;
-}
-.site-nav a:hover, .nav a:hover { color: rgba(255,255,255,1); }
-
-/* 给正文留出 fixed header 的空间（只对非首页更重要） */
-main, .page-content, .content, .container {
-  padding-top: 56px;
-}
-
-/* 首页 hero 贴顶：不要被 padding-top 顶下来 */
-.home main, .home .page-content, .home .content, .home .container {
-  padding-top: 0 !important;
-}
+      /* =========================
+         Mobile
+      ========================== */
+      @media (max-width: 720px) {
+        .site-header { padding: 14px 16px; }
+        .site-nav a { margin-left: 14px; font-size: 13px; }
+        .page-content { padding: 78px 18px 72px; }
+        .page-content h1 { font-size: 34px; }
+      }
     </style>
   </head>
 
-  <body>
-    <!-- Header for inner pages (Home uses its own hero nav, so we hide this header on home) -->
-    {% if page.url != "/" %}
-      <header class="site-header">
-        <a class="site-brand" href="{{ '/' | relative_url }}">D3Capital</a>
+  <!-- body class controls layout behavior -->
+  <body class="{% if page.url == '/' %}home{% else %}inner{% endif %}">
+    {% if page.url != '/' %}
+      <header class="site-header" aria-label="Top navigation">
+        <a class="site-brand" href="{{ '/' | relative_url }}">D3CAPITAL</a>
         <nav class="site-nav" aria-label="Primary">
           {% if site.navigation %}
             {% for item in site.navigation %}
               <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
             {% endfor %}
           {% else %}
-            <a href="{{ '/research' | relative_url }}">Research</a>
-            <a href="{{ '/about' | relative_url }}">About</a>
+            <a href="{{ '/research/' | relative_url }}">Research</a>
+            <a href="{{ '/about/' | relative_url }}">About</a>
           {% endif %}
         </nav>
       </header>
