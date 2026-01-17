@@ -7,6 +7,7 @@ permalink: /
 /* --- Home: full-bleed hero + tight manifesto --- */
 
 /* Kill layout spacing on HOME only (safer) */
+body.home{ margin:0 !important; padding:0 !important; }
 body.home .page-content,
 body.home .wrapper,
 body.home .container{
