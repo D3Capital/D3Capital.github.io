@@ -89,6 +89,15 @@
       /* Ensure hero touches top */
 .hero { margin-top: 0 !important; }
 .site-header, .topbar { margin: 0 !important; }
+html, body { margin: 0 !important; padding: 0 !important; }
+body { overflow-x: hidden; }
+
+.site-header, .topbar { margin: 0 !important; padding: 0 !important; border: 0 !important; }
+main, .page-content, .wrapper, .container, .content, .site-content { margin-top: 0 !important; padding-top: 0 !important; }
+
+/* 让 hero 顶到最上面，且消除图片基线缝 */
+.hero { margin: 0 !important; border-radius: 14px !important; overflow: hidden; }
+.hero-img { display: block; width: 100%; height: 70vh; min-height: 560px; object-fit: cover; }
     </style>
   </head>
 
