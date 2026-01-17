@@ -3,23 +3,87 @@ layout: page
 title: " "
 ---
 <style>
-/* Hero banner */
-.hero { position: relative; border-radius: 14px; overflow: hidden; margin: 18px 0 28px; }
-.hero-img { width: 100%; height: 380px; object-fit: cover; display: block; }
-.hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,.15), rgba(0,0,0,.45)); }
-.hero-text { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: 42px; max-width: 980px; }
-.hero-text h1 { margin: 0 0 10px; font-size: 42px; line-height: 1.1; letter-spacing: .02em; }
-.hero-text p { margin: 0; font-size: 18px; line-height: 1.5; opacity: .9; }
-@media (max-width: 720px) { .hero-img { height: 300px; } .hero-text { padding: 22px; } .hero-text h1 { font-size: 30px; } }
+/* Full-bleed hero (Hindenburg-style) */
+.hero-wrap{
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 0;
+  margin-bottom: 36px;
+}
+
+.hero{
+  position: relative;
+  height: clamp(360px, 46vw, 520px);
+  overflow: hidden;
+  border-radius: 0;
+}
+
+/* image */
+.hero-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.02);
+}
+
+/* overlay to ensure text legibility */
+.hero-overlay{
+  position: absolute;
+  inset: 0;
+  background:
+  linear-gradient(90deg, rgba(0,0,0,.74), rgba(0,0,0,.18), rgba(0,0,0,.60)),
+  linear-gradient(180deg, rgba(160,0,0,.18), rgba(0,0,0,0));
+}
+
+/* text layer */
+.hero-text{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(22px, 4vw, 64px);
+  max-width: 1100px;
+}
+
+/* FORCE white text, override theme */
+.hero-text h1{
+  color: #fff !important;
+  margin: 0 0 12px;
+  font-size: clamp(30px, 3.6vw, 48px);
+  line-height: 1.08;
+  letter-spacing: .02em;
+  text-shadow: 0 10px 24px rgba(0,0,0,.55);
+}
+
+.hero-text p{
+  color: rgba(255,255,255,.90) !important;
+  margin: 0;
+  font-size: clamp(14px, 1.4vw, 18px);
+  line-height: 1.55;
+  text-shadow: 0 10px 22px rgba(0,0,0,.45);
+}
+
+/* optional: keep your page content from sticking to edges on very wide screens */
+@media (min-width: 1400px){
+  .hero-text{ padding-left: calc((100vw - 1200px)/2); }
+}
 </style>
 
 <!-- HERO -->
-<div class="hero">
-  <img class="hero-img" src="/assets/img/hero.jpg" alt="D3 Capital Research Notes">
-  <div class="hero-overlay"></div>
-  <div class="hero-text">
-    <h1>D3 Capital Research Notes</h1>
-    <p>Systematic thinking on markets, capital, and decisions.</p>
+<div class="hero-wrap">
+  <div class="hero">
+    <img class="hero-img" src="/assets/img/hero.jpg" alt="D3 Capital Research Notes">
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <h1>D3 Capital Research Notes</h1>
+      <p>Systematic thinking on markets, capital, and decisions.</p>
+    </div>
   </div>
 </div>
 <!-- /HERO -->
