@@ -107,6 +107,41 @@ main, .page-content, .wrapper, .container, .content, .site-content { margin-top:
   border-radius: 0 !important;
   display: block;
 }
+/* ===== Global reset: kill white edge ===== */
+html, body { margin: 0; padding: 0; }
+body { background: #000; } /* 避免顶部露出白底 */
+
+/* ===== Top nav: translucent + blur (institutional) ===== */
+.site-header, .topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 9999;
+  margin: 0 !important;
+  background: rgba(0,0,0,0.35);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 0;
+}
+
+/* 导航文字更清晰、更协调 */
+.site-nav a, .nav a {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.92);
+  text-transform: uppercase;
+}
+.site-nav a:hover, .nav a:hover { color: rgba(255,255,255,1); }
+
+/* 给正文留出 fixed header 的空间（只对非首页更重要） */
+main, .page-content, .content, .container {
+  padding-top: 56px;
+}
+
+/* 首页 hero 贴顶：不要被 padding-top 顶下来 */
+.home main, .home .page-content, .home .content, .home .container {
+  padding-top: 0 !important;
+}
     </style>
   </head>
 
