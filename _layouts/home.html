@@ -1,4 +1,32 @@
 <style>
+  /* Hard reset for true edge-to-edge hero */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background: #000;
+}
+
+/* If your theme adds wrappers, neutralize them on home */
+.page-content, .wrapper, .container, main {
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+}
+
+/* Use 100% not 100vw to avoid mobile scrollbar gap */
+.hero {
+  width: 100% !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Remove any img inline gap */
+.hero-img {
+  display: block;
+}
   /* Home only */
   .home-hero {
     position: relative;
