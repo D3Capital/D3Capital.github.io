@@ -134,8 +134,8 @@ permalink: /
       <a href="/" aria-label="Home">D3CAPITAL</a>
     </div>
     <nav class="hero-links" aria-label="Primary">
-      <a href="/research/">Research</a>
-      <a href="/about/">About</a>
+      <a href="{{ '/research/' | relative_url }}">Research</a>
+      <a href="{{ '/about/' | relative_url }}">About</a>
     </nav>
   </div>
 

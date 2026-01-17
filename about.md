@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-permalink: /about
+permalink: /about/
 ---
 
 D3Capital is an independent research notebook focused on structural, non-directional return mechanisms.

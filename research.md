@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Research Archive
+permalink: /research/
 ---
 
 ## Research Archive
