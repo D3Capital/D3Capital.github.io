@@ -1,145 +1,102 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{% if page.title and page.title != "" %}{{ page.title }} · {% endif %}{{ site.title }}</title>
 
-    <title>
-      {% if page.title and page.title != "" %}
-        {{ page.title }} · {{ site.title }}
-      {% else %}
-        {{ site.title }}
-      {% endif %}
-    </title>
+  <style>
+    :root{
+      --maxw: 980px;
+      --pad: 24px;
+      --text: rgba(0,0,0,.78);
+      --muted: rgba(0,0,0,.58);
+      --border: rgba(0,0,0,.10);
+      --link: rgba(0,0,0,.82);
+    }
 
-    {% if site.description %}
-      <meta name="description" content="{{ site.description | strip_html | strip_newlines | escape }}" />
-    {% endif %}
+    html, body { margin:0; padding:0; }
+    body{
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background:#fff;
+      color: var(--text);
+      overflow-x:hidden;
+    }
 
-    <style>
-      /* =========================
-         Global Reset (safe)
-      ========================== */
-      html, body { margin: 0; padding: 0; }
-      html { background: #fff; }
-      body {
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-        color: #111;
-        background: #fff;
-        line-height: 1.65;
-      }
-      a { color: inherit; text-decoration: none; }
-      a:hover { opacity: .92; }
-      img { max-width: 100%; height: auto; display: block; }
+    a{ color: var(--link); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
 
-      /* =========================
-         Page Mode Switch
-         - home: no header, no top padding
-         - inner: fixed header + content padding
-      ========================== */
-      body.home { background: #fff; } /* 避免首页顶部露白，即使有 1px 缝也不会白 */
-      body.inner { background: #fff; }
+    /* Topbar (non-home only) */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar-inner{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 14px var(--pad);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 18px;
+    }
+    .brand{
+      font-weight: 800;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      font-size: 16px;
+    }
+    .nav a{
+      margin-left: 18px;
+      font-size: 14px;
+      font-weight: 650;
+      letter-spacing: .03em;
+      opacity: .9;
+    }
+    .nav a:hover{ opacity: 1; }
 
-      /* =========================
-         Fixed Header (inner pages)
-      ========================== */
-      .site-header {
-        position: fixed;
-        top: 0; left: 0; right: 0;
-        z-index: 9999;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 16px 28px;
-        background: rgba(0,0,0,.38);
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(255,255,255,.10);
-      }
+    /* Content container (non-home only) */
+    .main{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 56px var(--pad) 96px;
+    }
+    .main h1{ font-size: 44px; margin: 0 0 18px; letter-spacing: -0.02em; }
+    .main h2{ margin-top: 36px; }
+    .main p{ line-height: 1.85; color: var(--text); }
 
-      .site-brand {
-        font-size: 16px;
-        font-weight: 800;
-        letter-spacing: .12em;
-        text-transform: uppercase;
-        color: rgba(255,255,255,.95);
-      }
+    /* Home: let home layout control full-bleed sections */
+    body.is-home .topbar{ display:none; }
+    body.is-home .main{ max-width:none; padding:0; margin:0; }
 
-      .site-nav a {
-        margin-left: 20px;
-        font-size: 14px;
-        font-weight: 650;
-        letter-spacing: .06em;
-        text-transform: uppercase;
-        color: rgba(255,255,255,.90);
-        opacity: .92;
-      }
-      .site-nav a:hover { opacity: 1; }
+    @media (max-width: 720px){
+      .topbar-inner{ padding: 12px 16px; }
+      .brand{ font-size: 15px; }
+      .nav a{ margin-left: 14px; font-size: 13px; }
+      .main{ padding: 42px 16px 80px; }
+      .main h1{ font-size: 34px; }
+    }
+  </style>
+</head>
 
-      /* =========================
-         Inner Page Content Layout
-      ========================== */
-      .page-content {
-        max-width: 760px;
-        margin: 0 auto;
-        padding: 88px 24px 96px; /* 顶部留给 fixed header */
-      }
+<body class="{% if page.layout == 'home' %}is-home{% endif %}">
+  {% unless page.layout == 'home' %}
+  <header class="topbar" aria-label="Site header">
+    <div class="topbar-inner">
+      <div class="brand"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></div>
+      <nav class="nav" aria-label="Primary">
+        <a href="{{ '/research/' | relative_url }}">Research</a>
+        <a href="{{ '/about/' | relative_url }}">About</a>
+      </nav>
+    </div>
+  </header>
+  {% endunless %}
 
-      .page-content h1 {
-        margin: 0 0 18px;
-        font-size: 42px;
-        line-height: 1.15;
-      }
-      .page-content h2 {
-        margin: 34px 0 12px;
-        font-size: 22px;
-        line-height: 1.25;
-      }
-      .page-content p { margin: 0 0 14px; color: rgba(0,0,0,.78); }
-      .page-content hr { border: 0; border-top: 1px solid rgba(0,0,0,.10); margin: 26px 0; }
-
-      /* =========================
-         Home Page Layout
-         - No header, no padding
-      ========================== */
-      body.home .page-content {
-        max-width: none;
-        margin: 0;
-        padding: 0; /* 关键：不允许把首页 hero 顶下去 */
-      }
-
-      /* =========================
-         Mobile
-      ========================== */
-      @media (max-width: 720px) {
-        .site-header { padding: 14px 16px; }
-        .site-nav a { margin-left: 14px; font-size: 13px; }
-        .page-content { padding: 78px 18px 72px; }
-        .page-content h1 { font-size: 34px; }
-      }
-    </style>
-  </head>
-
-  <!-- body class controls layout behavior -->
-  <body class="{% if page.url == '/' %}home{% else %}inner{% endif %}">
-    {% if page.url != '/' %}
-      <header class="site-header" aria-label="Top navigation">
-        <a class="site-brand" href="{{ '/' | relative_url }}">D3CAPITAL</a>
-        <nav class="site-nav" aria-label="Primary">
-          {% if site.navigation %}
-            {% for item in site.navigation %}
-              <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
-            {% endfor %}
-          {% else %}
-            <a href="{{ '/research/' | relative_url }}">Research</a>
-            <a href="{{ '/about/' | relative_url }}">About</a>
-          {% endif %}
-        </nav>
-      </header>
-    {% endif %}
-
-    <main class="page-content">
-      {{ content }}
-    </main>
-  </body>
+  <main class="main">
+    {{ content }}
+  </main>
+</body>
 </html>

@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "R-000 | Research: 研究方法与边界说明"
-categories: [research]
-permalink: /research/r-000/
 ---
 
 ## 一句话结论
