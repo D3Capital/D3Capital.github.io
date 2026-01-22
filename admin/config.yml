@@ -1,0 +1,29 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+editor:
+  preview: true
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Slug (URL)",
+          name: "slug",
+          widget: "string",
+          hint: "Short identifier for URL/file name. Title can be anything."
+        }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", time_format: false }
+      - { label: "Summary", name: "excerpt", widget: "text", required: false }
+      - { label: "Body", name: "body", widget: "richtext" }
